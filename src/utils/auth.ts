@@ -1,9 +1,11 @@
 import { NavigateFunction } from 'react-router-dom';
-import { REDIRECT_URI, SCOPE } from '../config';
+import { SCOPE } from '../config';
 import { generateRandomString, generateUrlWithSearchParams } from './common';
 
 const { VITE_CLIENT_ID: client_id, VITE_CLIENT_SECRET: clinet_secret } =
   import.meta.env;
+
+const REDIRECT_URI = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/reroute`;
 
 export const generateCodeChallenge = async (codeVerifier: string) => {
   const digest = await crypto.subtle.digest(
